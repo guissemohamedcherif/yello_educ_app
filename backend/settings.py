@@ -102,7 +102,7 @@ DATABASES = {
 
         'USER': 'yello_app',
 
-        'PASSWORD': os.environ.get('PASSWORD_DB'),
+        'PASSWORD': os.environ.get('password_db'),
         
         'HOST': 'localhost',
         # 'HOST': 'db',
