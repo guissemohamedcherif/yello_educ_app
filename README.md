@@ -124,7 +124,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 1. Clone the repo
    ```sh
-   git clone https://gitlab.com/volkeno/app_name-django.git
+   git clone https://github.com/guissemohamedcherif/yello_educ_app.git
    ```
 
 2. Install required python packages
