@@ -185,8 +185,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Mohamed Cherif GUISSE - [@My-Linkedin profile](https://www.linkedin.com/in/mohamed-cherif-guisse/)
+Mohamed Cherif GUISSE - [Linkedin-Profile](https://www.linkedin.com/in/mohamed-cherif-guisse/)
 
-Project Link: [https://gitlab.com/volkeno/app_name-django](https://gitlab.com/volkeno/app_name-django)
+Project Link: [git@github.com:guissemohamedcherif/yello_educ_app.git](git@github.com:guissemohamedcherif/yello_educ_app.git)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
