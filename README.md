@@ -68,7 +68,7 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 This small project is about to test how i'm going to handle the necessary prerequises of Yello concepts.
-
+NB: I had to remove permissions for the test of courses crud but not in users list
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
@@ -134,7 +134,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
    ```
 
-3. Create .env file and copy .env.example contents in .env
+3. Create .env file in root directory of app and copy .env.example contents in it
 
    ```sh
    mkdir .env

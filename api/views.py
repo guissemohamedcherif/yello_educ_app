@@ -2,7 +2,7 @@ from http.client import HTTPResponse
 from rest_framework.response import Response
 from api.serializers import (LoginSerializer, UserSerializer, UserGetSerializer,
                              UserRegisterSerializer, CourseSerializer)
-from api.models import User, Course, ADMIN
+from api.models import User, Course, ADMIN, APPRENANT
 from rest_framework import generics
 from backend import settings
 from django.utils import timezone
@@ -80,13 +80,16 @@ class UserAPIView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
 
     def get(self, request, id, format=None):
-        try:
-            item = User.objects.get(id=id)
-            serializer = UserSerializer(item)
-            response = Response(serializer.data)
-            return response
-        except User.DoesNotExist:
-            return Response(status=404)
+        if request.user.is_superuser or request.user.user_type==ADMIN:
+            try:
+                item = User.objects.get(id=id)
+                serializer = UserGetSerializer(item)
+                response = Response(serializer.data)
+                return response
+            except User.DoesNotExist:
+                return Response(status=404)
+        else:
+            return Response({"message": "Unauthorized action"})
 
     def put(self, request, id, format=None):
         try:
@@ -115,7 +118,20 @@ class UserAPIView(generics.RetrieveAPIView):
             return Response(status=404)
 
 
+class UserAPIListView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get(self, request, format=None):
+        if request.user.is_superuser or request.user.user_type == ADMIN:
+            items = User.objects.filter(user_type=APPRENANT)
+            return Response(UserGetSerializer(items, many=True).data)
+        else:
+            return Response({"message": "Unauthorized action"})
+
+
 class CourseAPIListView(generics.CreateAPIView):
+    permission_classes = ()
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
@@ -132,6 +148,7 @@ class CourseAPIListView(generics.CreateAPIView):
 
 
 class CourseAPIView(generics.RetrieveAPIView):
+    permission_classes = ()
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
